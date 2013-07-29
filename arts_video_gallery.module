@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Video Gallery feature.
+ */
+
+include_once 'arts_video_gallery.features.inc';
