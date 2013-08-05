@@ -12,6 +12,7 @@ dependencies[] = file_entity
 dependencies[] = media
 dependencies[] = media_internet
 dependencies[] = media_youtube
+dependencies[] = node
 dependencies[] = strongarm
 dependencies[] = unimelb_arts
 dependencies[] = views
