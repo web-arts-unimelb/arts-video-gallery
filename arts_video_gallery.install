@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function arts_video_gallery_install() {
+  // Put the video gallery pager block on video pages.
+  db_insert('block')
+    ->fields(array(
+      'module' => 'views',
+      'delta' => 'video_gallery-block_1',
+      'theme' => variable_get('default_theme', 'unimelb'),
+      'status' => 1,
+      'region' => 'content',
+      'visibility' => 1,
+      'pages' => 'video/*',
+      'title' => '<none>'
+    ))
+    ->execute();
+}
