@@ -58,7 +58,7 @@ function arts_video_gallery_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Please add a description of this video. Do not include the transcript here.',
+      'description' => 'Please add a description of this video. Do not include the transcript here. The front page summary is used as a hover tooltip on the video thumbnail.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -84,7 +84,6 @@ function arts_video_gallery_field_default_fields() {
       'settings' => array(
         'better_formats' => array(
           'allowed_formats' => array(
-            'complete_full_html' => 0,
             'filtered_html' => 0,
             'full_html' => 'full_html',
             'plain_text' => 0,
@@ -93,9 +92,6 @@ function arts_video_gallery_field_default_fields() {
           'default_order_toggle' => 0,
           'default_order_wrapper' => array(
             'formats' => array(
-              'complete_full_html' => array(
-                'weight' => '0',
-              ),
               'filtered_html' => array(
                 'weight' => '0',
               ),
@@ -121,6 +117,76 @@ function arts_video_gallery_field_default_fields() {
         ),
         'type' => 'text_textarea_with_summary',
         'weight' => '31',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-video-field_shared_tags'.
+  $fields['node-video-field_shared_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_shared_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'tags',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_shared_tags',
+      'label' => 'Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '36',
       ),
     ),
   );
@@ -156,7 +222,7 @@ function arts_video_gallery_field_default_fields() {
       'bundle' => 'video',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'If available, please add the video transcript in this field.',
+      'description' => 'If available, please add the video transcript in this field. Try to only use headers and paragraph text to aid readability.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -179,7 +245,6 @@ function arts_video_gallery_field_default_fields() {
       'settings' => array(
         'better_formats' => array(
           'allowed_formats' => array(
-            'complete_full_html' => 0,
             'filtered_html' => 0,
             'full_html' => 'full_html',
             'plain_text' => 0,
@@ -188,9 +253,6 @@ function arts_video_gallery_field_default_fields() {
           'default_order_toggle' => 0,
           'default_order_wrapper' => array(
             'formats' => array(
-              'complete_full_html' => array(
-                'weight' => '0',
-              ),
               'filtered_html' => array(
                 'weight' => '0',
               ),
@@ -342,9 +404,10 @@ function arts_video_gallery_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('If available, please add the video transcript in this field.');
-  t('Please add a description of this video. Do not include the transcript here.');
+  t('If available, please add the video transcript in this field. Try to only use headers and paragraph text to aid readability.');
+  t('Please add a description of this video. Do not include the transcript here. The front page summary is used as a hover tooltip on the video thumbnail.');
   t('Please add the YouTube link.');
+  t('Tags');
   t('Transcript');
   t('Video');
 
