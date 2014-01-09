@@ -72,3 +72,22 @@ function arts_video_gallery_node_info() {
   );
   return $items;
 }
+
+/*
+ * hook_url_inbound_alter
+ * Gary
+ */
+function arts_video_gallery_url_inbound_alter(&$path, $original_path, $path_language) {
+	if(preg_match('|^video/(.+)?|', $original_path, $matches)) {
+		_add_javascript('arts_video_gallery', 'arts_video_gallery.js');	
+	}
+}
+
+function _add_javascript($module_name, $script_name) {
+  $scripts = drupal_add_js();
+  $script_path = drupal_get_path('module', $module_name) . "/js/$script_name";
+
+  if(!isset($scripts[$script_path])) {
+  	drupal_add_js($script_path);
+  }
+}
