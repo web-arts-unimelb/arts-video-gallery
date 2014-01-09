@@ -84,7 +84,11 @@ function arts_video_gallery_url_inbound_alter(&$path, $original_path, $path_lang
 		We keep the menu link 'first time enrolment' open on page load.
 	*/
 	if(preg_match('|^video/(.+)?|', $original_path, $matches)) {
-		_add_javascript('arts_video_gallery', 'arts_video_gallery.js');	
+		_add_javascript('arts_video_gallery', 'arts_video_gallery.js');
+		_add_javascript('arts_video_gallery', 'arts_video_gallery_wrap_title.js');	
+	}
+	elseif(preg_match('|^video/?|', $original_path, $matches)) {
+		_add_javascript('arts_video_gallery', 'arts_video_gallery_wrap_title.js');
 	}
 }
 
