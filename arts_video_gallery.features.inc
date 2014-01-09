@@ -78,6 +78,11 @@ function arts_video_gallery_node_info() {
  * Gary
  */
 function arts_video_gallery_url_inbound_alter(&$path, $original_path, $path_language) {
+	/* 
+		On arts.unimelb.edu.au/video/video_name, we turn off the transcript field. 
+		We add jquery menu next to the video on the top. 
+		We keep the menu link 'first time enrolment' open on page load.
+	*/
 	if(preg_match('|^video/(.+)?|', $original_path, $matches)) {
 		_add_javascript('arts_video_gallery', 'arts_video_gallery.js');	
 	}
