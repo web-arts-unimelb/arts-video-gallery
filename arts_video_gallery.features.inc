@@ -85,6 +85,9 @@ function arts_video_gallery_url_inbound_alter(&$path, $original_path, $path_lang
 	*/
 	if(preg_match('|^video/(.+)?|', $original_path, $matches)) {
 		_add_javascript('arts_video_gallery', 'arts_video_gallery.js');
+
+		// Hack
+		drupal_add_css(drupal_get_path('module', 'arts_video_gallery'). '/css/arts_video_gallery.css');
 	}
 	elseif(preg_match('|^video/?|', $original_path, $matches)) {
 		_add_javascript('arts_video_gallery', 'arts_video_gallery.js');
